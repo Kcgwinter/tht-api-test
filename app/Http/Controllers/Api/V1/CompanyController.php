@@ -39,9 +39,9 @@ class CompanyController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Company $company)
+    public function show($id)
     {
-        $company = Company::find($company->id);
+        $company = Company::find($id);
         return response()->json([
             'status' => true,
             'message' => "Company received",

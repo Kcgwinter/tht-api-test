@@ -30,9 +30,9 @@ class CustomerController extends Controller
         ], 200);
     }
 
-    public function show(Customer $customer)
+    public function show($id)
     {
-        $customer = Customer::find($customer->id);
+        $customer = Customer::find($id);
         return response()->json([
             'status' => true,
             'message' => "Customer received",

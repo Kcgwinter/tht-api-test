@@ -26,4 +26,8 @@ Route::group(['prefix' => 'v1', 'namespace' => 'App\Http\Controllers\Api\V1'], f
     Route::apiResource('companies', CompanyController::class);
     Route::get("companies/{id}/withEmployees",'CompanyController@showWithEmployees');
     Route::apiResource('employees', EmployeeController::class);
+    Route::apiResource('requests', RequestController::class);
+    Route::apiResource('appointmentDays', AppointmentDaysController::class);
+    Route::apiResource('appointmentTimes', AppointmentTimesController::class);
+    Route::apiResource('onSiteAssessments', OnSiteAssessmentsController::class);
 });

@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\V1;
 
 use App\Models\Request;
-use App\Http\Requests\StoreRequestRequest;
-use App\Http\Requests\UpdateRequestRequest;
+use App\Http\Requests\V1\StoreRequestRequest;
+use App\Http\Requests\V1\UpdateRequestRequest;
+use App\Http\Controllers\Controller;
 
 class RequestController extends Controller
 {
@@ -13,15 +14,12 @@ class RequestController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        $requests = Request::all();
+        return response()->json([
+            'status' => true,
+            'message' => "Requests received",
+            'data' => $requests
+        ]);
     }
 
     /**
@@ -29,31 +27,41 @@ class RequestController extends Controller
      */
     public function store(StoreRequestRequest $req)
     {
-        //
+        $request = Request::create($req->all());
+
+        return response()->json([
+            'status' => true,
+            'message' => "Request created",
+            'data' => $request
+        ], 200);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Request $req)
+    public function show($id)
     {
-        //
+        $res  = Request::find($id);
+        return response()->json([
+            'status' => true,
+            'message' => "Request received",
+            'data' => $res
+        ], 200);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Request $req)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
      */
     public function update(UpdateRequestRequest $request, Request $req)
     {
-        //
+        $req->update($request->all());
+
+        return response()->json([
+            'status' => true,
+            'message' => "Request updated",
+            'data' => $req
+        ], 200);
     }
 
     /**
@@ -61,6 +69,12 @@ class RequestController extends Controller
      */
     public function destroy(Request $req)
     {
-        //
+        $req->delete();
+
+        return response()->json([
+            'status' => true,
+            'message' => 'Request deleted',
+            'data' => ""
+        ], 200);
     }
 }

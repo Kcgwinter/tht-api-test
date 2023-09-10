@@ -10,6 +10,7 @@ class appointmentTimes extends Model
     use HasFactory;
     protected $fillable = [
         'id',
+        'request_id',
         'AnyTime',
         'Morning',
         'Afternoon',

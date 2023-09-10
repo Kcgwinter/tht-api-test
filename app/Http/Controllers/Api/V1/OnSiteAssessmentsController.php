@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\V1;
 
 use App\Models\onSiteAssessments;
-use App\Http\Requests\StoreonSiteAssessmentsRequest;
-use App\Http\Requests\UpdateonSiteAssessmentsRequest;
+use App\Http\Requests\V1\StoreonSiteAssessmentsRequest;
+use App\Http\Requests\V1\UpdateonSiteAssessmentsRequest;
+use App\Http\Controllers\Controller;
 
 class OnSiteAssessmentsController extends Controller
 {
@@ -13,39 +14,40 @@ class OnSiteAssessmentsController extends Controller
      */
     public function index()
     {
-        //
+        $days = onSiteAssessments::all();
+        return response()->json([
+            'status' => true,
+            'message' => "on Site Assessments received",
+            'data' => $days
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(StoreonSiteAssessmentsRequest $request)
     {
-        //
+        $res = onSiteAssessments::create($request->all());
+
+        return response()->json([
+            'status' => true,
+            'message' => "on Site Assessments created",
+            'data' => $res
+        ], 200);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(onSiteAssessments $onSiteAssessments)
+    public function show($id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(onSiteAssessments $onSiteAssessments)
-    {
-        //
+        $res  = onSiteAssessments::find($id);
+        return response()->json([
+            'status' => true,
+            'message' => "on Site Assessments received",
+            'data' => $res
+        ], 200);
     }
 
     /**
@@ -53,7 +55,13 @@ class OnSiteAssessmentsController extends Controller
      */
     public function update(UpdateonSiteAssessmentsRequest $request, onSiteAssessments $onSiteAssessments)
     {
-        //
+        $onSiteAssessments->update($request->all());
+
+        return response()->json([
+            'status' => true,
+            'message' => "on Site Assessments updated",
+            'data' => $onSiteAssessments
+        ], 200);
     }
 
     /**
@@ -61,6 +69,12 @@ class OnSiteAssessmentsController extends Controller
      */
     public function destroy(onSiteAssessments $onSiteAssessments)
     {
-        //
+        $onSiteAssessments->delete();
+
+        return response()->json([
+            'status' => true,
+            'message' => 'on Site Assessments deleted',
+            'data' => ""
+        ], 200);
     }
 }

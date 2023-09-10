@@ -11,6 +11,7 @@ class appointmentDays extends Model
 
     protected $fillable = [
         'id',
+        'request_id',
         'Monday',
         'Tuesday',
         'Wednesday',

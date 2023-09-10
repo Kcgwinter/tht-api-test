@@ -30,9 +30,9 @@ class AddressController extends Controller
         ], 200);
     }
 
-    public function show(Address $address)
+    public function show($id)
     {
-        $address  = Address::find($address->id);
+        $address  = Address::find($id);
         return response()->json([
             'status' => true,
             'message' => "Address received",

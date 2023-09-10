@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\V1;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -22,7 +22,7 @@ class UpdateappointmentTimesRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'request_id' => ['required'],
         ];
     }
 }

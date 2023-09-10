@@ -40,9 +40,9 @@ class EmployeeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Employee $employee)
+    public function show($id)
     {
-        $employee  = Employee::find($employee);
+        $employee  = Employee::find($id);
         return response()->json([
             'status' => true,
             'message' => "Employee received",
