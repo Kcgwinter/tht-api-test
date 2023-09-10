@@ -57,6 +57,10 @@ Route::group(['prefix' => 'v1', 'namespace' => 'App\Http\Controllers\Api\V1'], f
     Route::apiResource('invoiceItems', InvoiceItemsController::class);
     Route::apiResource('invoicePayment', InvoicePaymentsController::class);
 
+    // Case
+
+
+    // Inventory
 
 
 });
