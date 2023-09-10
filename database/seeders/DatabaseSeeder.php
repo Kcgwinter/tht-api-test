@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
         $this->call([AddressSeeder::class]);
         $this->call([CompanySeeder::class]);
         $this->call([RequestSeeder::class]);
+        $this->call([QuotesSeeder::class]);
+        $this->call([JobsSeeder::class]);
 
         // \App\Models\User::factory(10)->create();
 

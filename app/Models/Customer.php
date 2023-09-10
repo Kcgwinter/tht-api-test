@@ -20,6 +20,7 @@ class Customer extends Model
         'phone',
         'mobile',
         'birthdate',
+        'textok'
     ];
 
     public function addresses()

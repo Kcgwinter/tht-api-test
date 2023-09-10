@@ -2,37 +2,38 @@
 
 namespace App\Http\Controllers\Api\V1;
 
-use App\Models\Request;
-use App\Http\Requests\V1\StoreRequestRequest;
-use App\Http\Requests\V1\UpdateRequestRequest;
+use App\Models\quotes;
+use App\Http\Requests\V1\StorequotesRequest;
+use App\Http\Requests\V1\UpdatequotesRequest;
 use App\Http\Controllers\Controller;
 
-class RequestController extends Controller
+class QuotesController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $requests = Request::all();
+        $items = quotes::all();
         return response()->json([
             'status' => true,
-            'message' => "Requests received",
-            'data' => $requests
-        ]);
+            'message' => "quotes received",
+            'data' => $items
+        ], 200);
     }
+
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreRequestRequest $req)
+    public function store(StorequotesRequest $request)
     {
-        $request = Request::create($req->all());
+        $item = quotes::create($request->all());
 
         return response()->json([
             'status' => true,
-            'message' => "Request created",
-            'data' => $request
+            'message' => "quote created",
+            'data' => $item
         ], 200);
     }
 
@@ -41,50 +42,50 @@ class RequestController extends Controller
      */
     public function show($id)
     {
-        $res  = Request::find($id);
+        $item  = quotes::find($id);
         return response()->json([
             'status' => true,
-            'message' => "Request received",
-            'data' => $res
+            'message' => "quote received",
+            'data' => $item
         ], 200);
     }
+
 
     public function showWithData(int $id)
     {
-        $request = Request::with('appointmentDays')->with('appointmentTimes')->with('onSiteAssessments')->find($id);
+        $quote = quotes::with('Items')->find($id);
 
         return response()->json([
             'status' => true,
-            'message' => "Request received",
-            'data' => $request
+            'message' => "quote received",
+            'data' => $quote
         ], 200);
     }
-
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateRequestRequest $request, Request $req)
+    public function update(UpdatequotesRequest $request, quotes $quotes)
     {
-        $req->update($request->all());
+        $quotes->update($request->all());
 
         return response()->json([
             'status' => true,
-            'message' => "Request updated",
-            'data' => $req
+            'message' => "Quote updated",
+            'data' => $quotes
         ], 200);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Request $req)
+    public function destroy(quotes $quotes)
     {
-        $req->delete();
+        $quotes->delete();
 
         return response()->json([
             'status' => true,
-            'message' => 'Request deleted',
+            'message' => 'quote deleted',
             'data' => ""
         ], 200);
     }

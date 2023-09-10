@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\V1\AddressController;
+use App\Http\Controllers\Api\V1\QuotesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -25,6 +26,7 @@ Route::group(['prefix' => 'v1', 'namespace' => 'App\Http\Controllers\Api\V1'], f
     // Customer
     Route::apiResource('customers', CustomerController::class);
     Route::apiResource('addresses', AddressController::class);
+    Route::get("customer/{id}/withAddresses",'CompanyController@showWithAddresses');
 
     // Company
     Route::apiResource('companies', CompanyController::class);
@@ -33,7 +35,28 @@ Route::group(['prefix' => 'v1', 'namespace' => 'App\Http\Controllers\Api\V1'], f
 
     // Requests
     Route::apiResource('requests', RequestController::class);
+    Route::get("requests/{id}/withData",'RequestController@showWithData');
     Route::apiResource('appointmentDays', AppointmentDaysController::class);
     Route::apiResource('appointmentTimes', AppointmentTimesController::class);
     Route::apiResource('onSiteAssessments', OnSiteAssessmentsController::class);
+
+    // Quotes
+
+    Route::apiResource('quotes', QuotesController::class);
+    Route::get("quotes/{id}/withData",'QuotesController@showWithData');
+    Route::apiResource('quotesItems', QuotesItemsController::class);
+
+    // Jobs
+    Route::apiResource('jobs', JobsController::class);
+    Route::get("jobs/{id}/withData",'JobsController@showWithData');
+    Route::apiResource('jobsItems', JobsItemsController::class);
+
+    //Invoice
+    Route::apiResource('invoice', InvoiceController::class);
+    Route::get("invoice/{id}/withData",'InvoiceController@showWithData');
+    Route::apiResource('invoiceItems', InvoiceItemsController::class);
+    Route::apiResource('invoicePayment', InvoicePaymentsController::class);
+
+
+
 });

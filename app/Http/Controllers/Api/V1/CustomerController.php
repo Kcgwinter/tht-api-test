@@ -40,6 +40,17 @@ class CustomerController extends Controller
         ], 200);
     }
 
+    public function showWithAddresses(int $id)
+    {
+        $company = Customer::with('addresses')->find($id);
+
+        return response()->json([
+            'status' => true,
+            'message' => "Customer received",
+            'data' => $company
+        ], 200);
+    }
+
     public function update(UpdateCustomerRequest $request, Customer $customer)
     {
         $customer->update($request->all());

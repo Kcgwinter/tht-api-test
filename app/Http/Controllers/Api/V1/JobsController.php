@@ -2,37 +2,38 @@
 
 namespace App\Http\Controllers\Api\V1;
 
-use App\Models\Request;
-use App\Http\Requests\V1\StoreRequestRequest;
-use App\Http\Requests\V1\UpdateRequestRequest;
+use App\Models\Jobs;
+use App\Http\Requests\V1\StoreJobsRequest;
+use App\Http\Requests\V1\UpdateJobsRequest;
 use App\Http\Controllers\Controller;
 
-class RequestController extends Controller
+class JobsController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $requests = Request::all();
+        $items = Jobs::all();
         return response()->json([
             'status' => true,
-            'message' => "Requests received",
-            'data' => $requests
-        ]);
+            'message' => "jobs received",
+            'data' => $items
+        ], 200);
     }
+
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreRequestRequest $req)
+    public function store(StoreJobsRequest $request)
     {
-        $request = Request::create($req->all());
+        $item = Jobs::create($request->all());
 
         return response()->json([
             'status' => true,
-            'message' => "Request created",
-            'data' => $request
+            'message' => "job created",
+            'data' => $item
         ], 200);
     }
 
@@ -41,22 +42,22 @@ class RequestController extends Controller
      */
     public function show($id)
     {
-        $res  = Request::find($id);
+        $item  = Jobs::find($id);
         return response()->json([
             'status' => true,
-            'message' => "Request received",
-            'data' => $res
+            'message' => "job received",
+            'data' => $item
         ], 200);
     }
 
     public function showWithData(int $id)
     {
-        $request = Request::with('appointmentDays')->with('appointmentTimes')->with('onSiteAssessments')->find($id);
+        $jobs = Jobs::with('Items')->with('Visits')->find($id);
 
         return response()->json([
             'status' => true,
-            'message' => "Request received",
-            'data' => $request
+            'message' => "job received",
+            'data' => $jobs
         ], 200);
     }
 
@@ -64,27 +65,27 @@ class RequestController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateRequestRequest $request, Request $req)
+    public function update(UpdateJobsRequest $request, Jobs $jobs)
     {
-        $req->update($request->all());
+        $jobs->update($request->all());
 
         return response()->json([
             'status' => true,
-            'message' => "Request updated",
-            'data' => $req
+            'message' => "job updated",
+            'data' => $jobs
         ], 200);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Request $req)
+    public function destroy(Jobs $jobs)
     {
-        $req->delete();
+        $jobs->delete();
 
         return response()->json([
             'status' => true,
-            'message' => 'Request deleted',
+            'message' => 'job deleted',
             'data' => ""
         ], 200);
     }

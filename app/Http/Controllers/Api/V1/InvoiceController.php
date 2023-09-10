@@ -2,37 +2,39 @@
 
 namespace App\Http\Controllers\Api\V1;
 
-use App\Models\Request;
-use App\Http\Requests\V1\StoreRequestRequest;
-use App\Http\Requests\V1\UpdateRequestRequest;
+use App\Models\Invoice;
+use App\Http\Requests\V1\StoreInvoiceRequest;
+use App\Http\Requests\V1\UpdateInvoiceRequest;
 use App\Http\Controllers\Controller;
 
-class RequestController extends Controller
+class InvoiceController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $requests = Request::all();
+
+        $invoices = Invoice::all();
         return response()->json([
             'status' => true,
-            'message' => "Requests received",
-            'data' => $requests
-        ]);
+            'message' => "Invoices received",
+            'data' => $invoices
+        ], 200);
     }
+
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreRequestRequest $req)
+    public function store(StoreInvoiceRequest $request)
     {
-        $request = Request::create($req->all());
+        $invoice = Invoice::create($request->all());
 
         return response()->json([
             'status' => true,
-            'message' => "Request created",
-            'data' => $request
+            'message' => "Invoice created",
+            'data' => $invoice
         ], 200);
     }
 
@@ -41,50 +43,49 @@ class RequestController extends Controller
      */
     public function show($id)
     {
-        $res  = Request::find($id);
+        $invoice  = Invoice::find($id);
         return response()->json([
             'status' => true,
-            'message' => "Request received",
-            'data' => $res
+            'message' => "Invoice received",
+            'data' => $invoice
         ], 200);
     }
 
     public function showWithData(int $id)
     {
-        $request = Request::with('appointmentDays')->with('appointmentTimes')->with('onSiteAssessments')->find($id);
+        $invoice = Invoice::with('Items')->with('Payments')->find($id);
 
         return response()->json([
             'status' => true,
-            'message' => "Request received",
-            'data' => $request
+            'message' => "invoice received",
+            'data' => $invoice
         ], 200);
     }
-
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateRequestRequest $request, Request $req)
+    public function update(UpdateInvoiceRequest $request, Invoice $invoice)
     {
-        $req->update($request->all());
+        $invoice->update($request->all());
 
         return response()->json([
             'status' => true,
-            'message' => "Request updated",
-            'data' => $req
+            'message' => "Invoice updated",
+            'data' => $invoice
         ], 200);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Request $req)
+    public function destroy(Invoice $invoice)
     {
-        $req->delete();
+        $invoice->delete();
 
         return response()->json([
             'status' => true,
-            'message' => 'Request deleted',
+            'message' => 'Invoice deleted',
             'data' => ""
         ], 200);
     }
