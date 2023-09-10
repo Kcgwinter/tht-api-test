@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('phone')->nullable();
             $table->string('mobile')->nullable();
             $table->datetime('birthdate')->nullable();
+            $table->boolean('textok')->default(1);
             $table->timestamps();
         });
     }
