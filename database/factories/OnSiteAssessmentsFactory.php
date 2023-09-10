@@ -17,7 +17,9 @@ class OnSiteAssessmentsFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'needed' => '1',
+            'text' => $this->faker->realText(),
+            'date' => $this->faker->dateTimeThisYear()
         ];
     }
 }

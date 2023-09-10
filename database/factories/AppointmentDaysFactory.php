@@ -17,7 +17,13 @@ class AppointmentDaysFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'Monday' => $this->faker->boolean(),
+            'Tuesday' => $this->faker->boolean(),
+            'Wednesday' => $this->faker->boolean(),
+            'Thursday' => $this->faker->boolean(),
+            'Friday' => $this->faker->boolean(),
+            'Saturday' => $this->faker->boolean(),
+            'Sunday' => $this->faker->boolean(),
         ];
     }
 }

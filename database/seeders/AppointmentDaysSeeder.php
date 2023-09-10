@@ -13,5 +13,6 @@ class AppointmentDaysSeeder extends Seeder
     public function run(): void
     {
         //
+        
     }
 }

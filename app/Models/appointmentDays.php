@@ -10,21 +10,19 @@ class appointmentDays extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
-        'customer_id',
-        'street',
-        'street2',
-        'city',
-        'state',
-        'postalCode',
-        'country',
-        'active'
+        'id',
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+        'Saturday',
+        'Sunday'
     ];
 
-
-    public function belongsTo()
+    public function Request()
     {
-        return $this->belongsTo(requests::class);
+        return $this->belongsTo(Request::class);
     }
 
 }

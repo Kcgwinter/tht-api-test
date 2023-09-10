@@ -18,6 +18,7 @@ class RequestFactory extends Factory
     {
         return [
             //
+                'details' => $this->faker->realText(),
         ];
     }
 }

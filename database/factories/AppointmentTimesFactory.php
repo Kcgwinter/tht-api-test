@@ -17,7 +17,10 @@ class AppointmentTimesFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'AnyTime' => $this->faker->boolean(),
+            'Morning' => $this->faker->boolean(),
+            'Afternoon' => $this->faker->boolean(),
+            'Evening' => $this->faker->boolean(),
         ];
     }
 }

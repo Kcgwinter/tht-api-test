@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('appointment_times', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('request_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->boolean('Anytime')->default(0);
+            $table->boolean('Morning')->default(0);
+            $table->boolean('Afternoon')->default(0);
+            $table->boolean('Evening')->default(0);
             $table->timestamps();
         });
     }
