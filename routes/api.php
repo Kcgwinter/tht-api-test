@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Controllers\Api\V1\AddressController;
-use App\Http\Controllers\Api\V1\QuotesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -41,7 +39,6 @@ Route::group(['prefix' => 'v1', 'namespace' => 'App\Http\Controllers\Api\V1'], f
     Route::apiResource('onSiteAssessments', OnSiteAssessmentsController::class);
 
     // Quotes
-
     Route::apiResource('quotes', QuotesController::class);
     Route::get("quotes/{id}/withData",'QuotesController@showWithData');
     Route::apiResource('quotesItems', QuotesItemsController::class);
@@ -58,7 +55,9 @@ Route::group(['prefix' => 'v1', 'namespace' => 'App\Http\Controllers\Api\V1'], f
     Route::apiResource('invoicePayment', InvoicePaymentsController::class);
 
     // Case
-
+    Route::apiResource('cases', CasesController::class);
+    Route::get("cases/{id}/withData",'CasesController@showWithData');
+    Route::apiResource('casesNotes', CasesController::class);
 
     // Inventory
 

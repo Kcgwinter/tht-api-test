@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('media', function (Blueprint $table) {
             $table->id();
+            $table->string('media_type')->nullable();
+            $table->string('name');
+            $table->string('file_name');
+            $table->string('mime_type');
+            $table->string('path');
+            $table->string('disk')->default('local');
+            $table->string('collection')->nullable();
+            $table->unsignedBigInteger('size');
             $table->timestamps();
         });
     }

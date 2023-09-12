@@ -20,12 +20,6 @@ class DatabaseSeeder extends Seeder
         $this->call([RequestSeeder::class]);
         $this->call([QuotesSeeder::class]);
         $this->call([JobsSeeder::class]);
-
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        $this->call([CasesSeeder::class]);
     }
 }

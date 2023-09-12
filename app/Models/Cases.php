@@ -19,9 +19,37 @@ class Cases extends Model
         'invoice_id',
     ];
 
+    public function Notes()
+    {
+        return $this->hasMany(CaseNotes::class);
+    }
 
-    public function customer()
+    public function Customer()
     {
         return $this->belongsTo(Customer::class);
+    }
+
+    public function Address()
+    {
+        return $this->belongsTo(Address::class);
+    }
+
+    public function Request()
+    {
+        return $this->hasOne(Request::class, 'id', 'request_id');
+    }
+
+    public function Quote()
+    {
+        return $this->hasOne(quotes::class,'id','quote_id');
+    }
+    public function Job()
+    {
+        return $this->hasOne(Jobs::class,'id','job_id');
+    }
+
+    public function Invoice()
+    {
+        return $this->hasOne(Invoice::class,'id','invoice_id');
     }
 }

@@ -15,10 +15,11 @@ return new class extends Migration {
             $table->string('name');
             $table->foreignId('customer_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('address_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
-            $table->unsignedBigInteger('request_id')->nullable();
-            $table->unsignedBigInteger('quote_id')->nullable();
-            $table->unsignedBigInteger('job_id')->nullable();
-            $table->unsignedBigInteger('invoice_id')->nullable();
+
+            $table->foreignId('request_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade')->nullable();
+            $table->foreignId('quote_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade')->nullable();
+            $table->foreignId('job_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade')->nullable();
+            $table->foreignId('invoice_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade')->nullable();
             $table->timestamps();
         });
     }

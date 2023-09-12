@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('case_notes', function (Blueprint $table) {
+        Schema::create('case__media', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('cases_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
-            $table->string('text');
+            $table->foreignId('media_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('case_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('case_notes');
+        Schema::dropIfExists('case__media');
     }
 };
