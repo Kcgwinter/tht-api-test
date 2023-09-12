@@ -25,4 +25,14 @@ class Company extends Model
     {
         return $this->hasMany(Employee::class);
     }
+
+    public function media()
+    {
+        return $this->belongsToMany(
+            Media::class,
+            'company__media',
+            'media_id',
+            'company_id'
+        );
+    }
 }

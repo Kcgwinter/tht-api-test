@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('disk')->default('local');
             $table->string('collection')->nullable();
             $table->unsignedBigInteger('size');
+            $table->string('url')->nullable();
             $table->timestamps();
         });
     }

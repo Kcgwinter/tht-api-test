@@ -41,15 +41,27 @@ class Cases extends Model
 
     public function Quote()
     {
-        return $this->hasOne(quotes::class,'id','quote_id');
+        return $this->hasOne(quotes::class, 'id', 'quote_id');
     }
     public function Job()
     {
-        return $this->hasOne(Jobs::class,'id','job_id');
+        return $this->hasOne(Jobs::class, 'id', 'job_id');
     }
 
     public function Invoice()
     {
-        return $this->hasOne(Invoice::class,'id','invoice_id');
+        return $this->hasOne(Invoice::class, 'id', 'invoice_id');
+    }
+
+
+
+    public function media()
+    {
+        return $this->belongsToMany(
+            Media::class,
+            'case__media',
+            'media_id',
+            'case_id'
+        );
     }
 }

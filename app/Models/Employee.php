@@ -23,4 +23,15 @@ class Employee extends Model
     {
         return $this->belongsTo(Company::class);
     }
+
+
+    public function media()
+    {
+        return $this->belongsToMany(
+            Media::class,
+            'employee__media',
+            'media_id',
+            'employee_id'
+        );
+    }
 }

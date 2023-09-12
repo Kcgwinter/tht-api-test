@@ -32,4 +32,15 @@ class Customer extends Model
     {
         return $this->hasMany(Cases::class);
     }
+
+
+    public function media()
+    {
+        return $this->belongsToMany(
+            Media::class,
+            'customer__media',
+            'media_id',
+            'customer_id'
+        );
+    }
 }
