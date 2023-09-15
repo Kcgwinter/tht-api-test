@@ -34,4 +34,29 @@ class Inventory extends Model
         'maximum_quantity'
     ];
 
+    public function category()
+    {
+        return $this->belongsTo(Inventory_category::class);
+    }
+    public function location()
+    {
+        return $this->belongsTo(Inventory_location::class);
+    }
+
+    public function receipt()
+    {
+        return $this->hasOne(Media::class, 'receipt_id');
+    }
+
+    public function media()
+    {
+        return $this->belongsToMany(
+            Media::class,
+            'inventory__media',
+            'inventory_id',
+            'media_id'
+        );
+    }
+
+
 }

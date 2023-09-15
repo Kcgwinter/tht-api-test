@@ -14,7 +14,12 @@ class MediaController extends Controller
      */
     public function index()
     {
-        //
+        $medias = Media::all();
+        return response()->json([
+            'status' => true,
+            'message' => "Media items received",
+            'data' => $medias
+        ], 200);
     }
 
     /**

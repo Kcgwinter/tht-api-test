@@ -60,6 +60,10 @@ Route::group(['prefix' => 'v1', 'namespace' => 'App\Http\Controllers\Api\V1'], f
     Route::apiResource('casesNotes', CasesController::class);
 
     // Inventory
-
+    Route::apiResource('inventory', InventoryController::class);
+    Route::apiResource('inventoryLocation', InventoryLocationController::class);
+    Route::get("inventoryCategory/{id}/withData",'InventoryLocationController@showWithData');
+    Route::apiResource('inventoryCategory', InventoryCategoryPolicy::class);
+    Route::get("inventoryCategory/{id}/withData",'InventoryCategoryPolicy@showWithData');
 
 });

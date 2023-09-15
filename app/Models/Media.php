@@ -65,4 +65,19 @@ class Media extends Model
         );
     }
 
+
+    public function inventory()
+    {
+        return $this->belongsToMany(
+            Media::class,
+            'inventory__media',
+            'media_id',
+            'inventory_id'
+        );
+    }
+
+    public function receipt()
+    {
+        return $this->belongsTo(Inventory::class);
+    }
 }

@@ -34,6 +34,8 @@ return new class extends Migration
             $table->string("customField2Name")->nullable();
             $table->string("customField3")->nullable();
             $table->string("customField3Name")->nullable();
+            $table->integer("minimum_quantity")->nullable();
+            $table->integer("maximum_quantity")->nullable();
             $table->timestamps();
         });
     }

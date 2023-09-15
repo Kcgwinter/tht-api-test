@@ -54,7 +54,6 @@ class Cases extends Model
     }
 
 
-
     public function media()
     {
         return $this->belongsToMany(
