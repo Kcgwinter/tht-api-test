@@ -17,14 +17,18 @@
         <h1>The Helpful Toolbox Backend</h1>
         <img src="{{ asset('img/Logo.png') }}" alt="The Helpful Toolbox">
         <section class="UrlSection">
-            If you want to connect your application with <br> the backend your connnection url is: <p class="connectionUrl">
+            If you want to connect your application with <br> the backend your connnection url is: <p
+                class="connectionUrl">
                 {{ url()->current() }}</p>
         </section>
         <section class="checkDB">
-            <label><input type="checkbox" @if($dbCheck)checked @endif name="dbConnection" onclick="return false;">Database Connection</label>
-
+            <h2>Checklist</h2>
+            <label>
+                <input type="checkbox" @if ($dbCheck) checked @endif name="dbConnection"
+                    onclick="return false;">
+                Database Connection
+            </label>
         </section>
-
 </body>
 
 </html>
