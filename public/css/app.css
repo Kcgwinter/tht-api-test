@@ -10,6 +10,8 @@ body {
 
 .connectionUrl{
     margin: 10px;
+    margin-left: 10vw;
+    margin-right: 10vw;
     border-radius: 25px;
     -webkit-border-radius: 25px;
     -moz-border-radius: 25px;
