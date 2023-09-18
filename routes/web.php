@@ -14,8 +14,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-
-    return view('welcome');
+    $dbCheck = true;
+    try {
+        DB::connection()->getPDO();
+        $dbCheck = true;
+     } catch (Exception $e) {
+        $dbCheck = false;
+     }
+    return view('welcome', ['dbCheck' => $dbCheck]);
 });
 
 

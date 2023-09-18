@@ -7,3 +7,17 @@ body {
 .titleSection {
     text-align: center;
 }
+
+.connectionUrl{
+    margin: 10px;
+    border-radius: 25px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -ms-border-radius: 25px;
+    -o-border-radius: 25px;
+    border: 1px solid white;
+    background-color: darkslategrey;
+    padding: 10px;
+    font-size: 26px;
+    font-weight: bold;
+}

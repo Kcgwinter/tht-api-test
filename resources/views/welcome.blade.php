@@ -17,18 +17,12 @@
         <h1>The Helpful Toolbox Backend</h1>
         <img src="{{ asset('img/Logo.png') }}" alt="The Helpful Toolbox">
         <section class="UrlSection">
-            If you want to connect your application with <br> the backend your connnection url is: <p>
+            If you want to connect your application with <br> the backend your connnection url is: <p class="connectionUrl">
                 {{ url()->current() }}</p>
         </section>
         <section class="checkDB">
-            @php
-                try {
-                    \DB::connection()->getPDO();
-                    echo \DB::connection()->getDatabaseName();
-                } catch (\Exception $e) {
-                    echo 'None';
-                }
-            @endphp
+            <label><input type="checkbox" @if($dbCheck)checked @endif name="dbConnection" onclick="return false;">Database Connection</label>
+
         </section>
 
 </body>
